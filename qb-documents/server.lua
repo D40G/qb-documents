@@ -3,11 +3,11 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local hiddencoords = vector3(1272.15, -1711.00, 54.77)
 local onDuty = 0
 
-QBCore.Functions.CreateCallback('> qb-documents:getlocation', function(source, cb)
+QBCore.Functions.CreateCallback('qb-documents:getlocation', function(source, cb)
     cb(hiddencoords)
 end)
 
-QBCore.Functions.CreateCallback('> qb-documents:getCops', function(source, cb)
+QBCore.Functions.CreateCallback('qb-documents:getCops', function(source, cb)
     cb(getCops())
 end)
 
@@ -17,27 +17,27 @@ function getCops()
     return 5
 end
 
-RegisterServerEvent("> qb-documents:GiveItem")
-AddEventHandler("> qb-documents:GiveItem", function(x, y, z)
+RegisterServerEvent("qb-documents:GiveItem")
+AddEventHandler("qb-documents:GiveItem", function(x, y, z)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     Player.Functions.AddItem('governfiles', 1)
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['governfiles'], "add")
 end)
 
-RegisterNetEvent('> qb-documents:updatetable')
-AddEventHandler('> qb-documents:updatetable', function(bool)
-    TriggerClientEvent('> qb-documents:synctable', -1, bool)
+RegisterNetEvent('qb-documents:updatetable')
+AddEventHandler('qb-documents:updatetable', function(bool)
+    TriggerClientEvent('qb-documents:synctable', -1, bool)
 end)
 
-RegisterServerEvent("> qb-documents:syncMission")
-AddEventHandler("> qb-documents:syncMission", function(missionData)
+RegisterServerEvent("qb-documents:syncMission")
+AddEventHandler("qb-documents:syncMission", function(missionData)
     local missionData = missionData
-    TriggerClientEvent('> qb-documents:syncMissionClient', -1, missionData)
+    TriggerClientEvent('qb-documents:syncMissionClient', -1, missionData)
 end)
 
-RegisterServerEvent("> qb-documents:delivery")
-AddEventHandler("> qb-documents:delivery", function()
+RegisterServerEvent("qb-documents:delivery")
+AddEventHandler("qb-documents:delivery", function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local check = Player.Functions.GetItemByName('governfiles')
