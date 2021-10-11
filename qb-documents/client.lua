@@ -43,13 +43,13 @@ Citizen.CreateThread(function()
         end)
         Wait(0)
     end
-    QBCore.Functions.TriggerCallback('> qb-documents:getlocation', function(servercoords)
+    QBCore.Functions.TriggerCallback('qb-documents:getlocation', function(servercoords)
         coords = servercoords
     end)
 end)
 
-RegisterNetEvent('> qb-documents:synctable')
-AddEventHandler('> qb-documents:synctable', function(bool)
+RegisterNetEvent('qb-documents:synctable')
+AddEventHandler('qb-documents:synctable', function(bool)
     inUse = bool
 end)
 
@@ -114,14 +114,14 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('> qb-documents:syncMissionClient')
-AddEventHandler('> qb-documents:syncMissionClient', function(missionData)
+RegisterNetEvent('qb-documents:syncMissionClient')
+AddEventHandler('qb-documents:syncMissionClient', function(missionData)
     locations = missionData
     inUse = missionData
 end)
 
 function main()
-    TriggerServerEvent('> qb-documents:updatetable', true)
+    TriggerServerEvent('qb-documents:updatetable', true)
     inUse = true
     rand = math.random(1, #Config.locations)
     location = Config.locations[rand]
@@ -194,7 +194,7 @@ end
 
 function maxDist()
     inUse = false
-    TriggerServerEvent('> qb-documents:updatetable', false)
+    TriggerServerEvent('qb-documents:updatetable', false)
     RemoveBlip(radius)
     RemoveBlip(blip)
     usedItem = false
@@ -233,17 +233,17 @@ function success(x, y, z, h)
                     DoScreenFadeIn(2000)
                     FreezeEntityPosition(PlayerPedId(), false)
                     DeleteEntity(box2)
-                    TriggerServerEvent('> qb-documents:GiveItem')
+                    TriggerServerEvent('qb-documents:GiveItem')
                     Citizen.Wait(2000)
                     Config.locations[rand]['active'] = false
-                    TriggerServerEvent('> qb-documents:syncMission', locations)
+                    TriggerServerEvent('qb-documents:syncMission', locations)
                     TriggerServerEvent('qb-phone:server:sendNewMail', {
                         sender = "Docs o plenty",
                         subject = "Congrats",
                         message = "Nice one! Looks like you got them, I'll send you the buyers address now.",
                         button = {
                             enabled = true,
-                            buttonEvent = "> qb-documents:setLocation",
+                            buttonEvent = "qb-documents:setLocation",
                             buttonData = waitingBlip
                         }
                     })
@@ -257,8 +257,8 @@ function success(x, y, z, h)
     end)
 end
 
-RegisterNetEvent('> qb-documents:setLocation')
-AddEventHandler('> qb-documents:setLocation', function(locationData)
+RegisterNetEvent('qb-documents:setLocation')
+AddEventHandler('qb-documents:setLocation', function(locationData)
     setMapBlip(vector2(2475.588, -384.1472))
 end)
 
@@ -277,7 +277,7 @@ Citizen.CreateThread(function()
         if disttocoord < 3 then
             DrawText3Ds(2475.588, -384.1472, 94.39928, '[E] - Sell Government Files')
             if IsControlJustPressed(1, 51) then
-                TriggerServerEvent('> qb-documents:delivery')
+                TriggerServerEvent('qb-documents:delivery')
                 Citizen.Wait(2000)
             end
         else
@@ -319,7 +319,7 @@ end
 
 function clearmission()
     inUse = false
-    TriggerServerEvent('> qb-documents:updatetable', false)
+    TriggerServerEvent('qb-documents:updatetable', false)
     RemoveBlip(radius)
     RemoveBlip(blip)
     usedItem = false
@@ -364,7 +364,7 @@ function spawnPed(x, y, z)
         Citizen.Wait(100)
     end
 
-    QBCore.Functions.TriggerCallback("> qb-documents:getCops", function(getCops)
+    QBCore.Functions.TriggerCallback("qb-documents:getCops", function(getCops)
         if Config.waypoint then
             SetNewWaypoint(x, y)
         end
