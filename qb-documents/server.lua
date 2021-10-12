@@ -1,10 +1,9 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-local hiddencoords = vector3(1272.15, -1711.00, 54.77)
 local onDuty = 0
 
 QBCore.Functions.CreateCallback('qb-documents:getlocation', function(source, cb)
-    cb(hiddencoords)
+    cb(vector3(Config.hackloc.x, Config.hackloc.y, Config.hackloc.z))
 end)
 
 QBCore.Functions.CreateCallback('qb-documents:getCops', function(source, cb)
