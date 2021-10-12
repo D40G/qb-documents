@@ -4,6 +4,10 @@ qb-nuclear renamed, fixed and updated to qb-documents for BCore by Manliketjb.
 
 ---
 
+New!! - Changeable locations with in Config.lua
+
+---
+
 add to qb-core/shared.lua
 
 ```
