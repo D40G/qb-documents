@@ -259,7 +259,7 @@ end
 
 RegisterNetEvent('qb-documents:setLocation')
 AddEventHandler('qb-documents:setLocation', function(locationData)
-    setMapBlip(vector2(2475.588, -384.1472))
+    setMapBlip(vector3(Config.Deliverloc.x, Config.Deliverloc.y, Config.Deliverloc.z))
 end)
 
 function setMapBlip(x, y)
@@ -273,9 +273,9 @@ Citizen.CreateThread(function()
         sleep = 5
         local player = PlayerPedId()
         local playercoords = GetEntityCoords(player)
-        local disttocoord = #(vector3(2475.588, -384.1472, 94.39928) - vector3(playercoords.x, playercoords.y, playercoords.z))
+        local disttocoord = #(vector3(Config.Deliverloc.x, Config.Deliverloc.y, Config.Deliverloc.z) - vector3(playercoords.x, playercoords.y, playercoords.z))
         if disttocoord < 3 then
-            DrawText3Ds(2475.588, -384.1472, 94.39928, '[E] - Sell Government Files')
+            DrawText3Ds(Config.Deliverloc.x, Config.Deliverloc.y, Config.Deliverloc.z, '[E] - Sell Government Files')
             if IsControlJustPressed(1, 51) then
                 TriggerServerEvent('qb-documents:delivery')
                 Citizen.Wait(2000)
@@ -289,7 +289,7 @@ end)
 
 function decipherAnim()
     local player = PlayerPedId()
-    SetEntityCoords(player, 1272.15, -1711.00, 54.77, 0.0, 0.0, 0.0, false)
+    SetEntityCoords(player, vector3(Config.hackloc.x, Config.hackloc.y, Config.hackloc.z - 1), 0.0, 0.0, 0.0, false)
     SetEntityHeading(player, 44.4)
     FreezeEntityPosition(player, true)
     if requiredItemsShowed then
