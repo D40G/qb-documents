@@ -1,6 +1,6 @@
 # qb-documents
 
-qb-nuclear renamed, fixed and updated to qb-documents for BCore by Manliketjb.
+qb-nuclear renamed, fixed and updated to qb-documents for QBCore by Manliketjb.
 
 ---
 
