@@ -77,8 +77,6 @@ Citizen.CreateThread(function()
                     DrawText3Ds(coords.x, coords.y, coords.z, '[E] - Decipher Files Location')
                     if IsControlJustPressed(0, 51) then
                         QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result)
-                            TriggerServerEvent("QBCore:Server:RemoveItem", "usb_device", 1)
-                            TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["usb_device"], "remove")
                             if result then
                                 decipherAnim()
                                 main()
@@ -128,6 +126,8 @@ function main()
     SetNewWaypoint(location.addBlip.x, location.addBlip.y)
     addBlip(location.addBlip.x, location.addBlip.y, location.addBlip.z)
     QBCore.Functions.Notify("Go to the highlighted area to search for the crate.", "error", 2500)
+    TriggerServerEvent("QBCore:Server:RemoveItem", "usb_device", 1)
+    TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["usb_device"], "remove")
     local player = PlayerPedId()
     local playerpos
     enroute = true
