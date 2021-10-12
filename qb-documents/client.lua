@@ -289,7 +289,7 @@ end)
 
 function decipherAnim()
     local player = PlayerPedId()
-    SetEntityCoords(player, 1272.31, -1711.65, 54.00, 0.0, 0.0, 0.0, false)
+    SetEntityCoords(player, 1272.15, -1711.00, 54.77, 0.0, 0.0, 0.0, false)
     SetEntityHeading(player, 44.4)
     FreezeEntityPosition(player, true)
     if requiredItemsShowed then
