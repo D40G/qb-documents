@@ -2,7 +2,8 @@ Config = {}
 Config.getCoords = false 
 
 Config.reward = math.random(2250, 5525)
-
+Config.hackloc = vector3(1272.35, -1711.55, 54.77) --- hack loaction, best to be placed in front of a computer for animation sake
+Config.Deliverloc = vector3(2475.588, -384.1472, 94.39928) --- sell location
 Config.policeJob = "police" -- Name of police job
 Config.amountCop = 5 -- change this to increase/decrease the enemy difficulty from tier 1 and tier 2 depending on how many cops are online.
 Config.hideBlip = true -- change this if you want the starting location to have a blip - (true/false)
@@ -53,7 +54,7 @@ Config.locations = {
 		active = false,														
 	},
 	[4] = { 
-		addBlip = vector3(2667.334, 2669.441, 79.88748),				
+		addBlip = vector3(2457.15, 2493.7, 42.77),				
 		enemy = vector3(2299.361, 2555.237, 46.67575),					
 		crate = vector4(2326.641, 2529.753, 46.66772, 76.28),	
 		active = false,														
